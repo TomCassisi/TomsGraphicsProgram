@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TomsGraphicsProgram", "TomsGraphicsProgram\TomsGraphicsProgram.csproj", "{B7CE5B52-09C3-4270-A572-37CE9DEC464B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TomsMathsLib", "TomsMathsLib\TomsMathsLib.csproj", "{BCAF88BA-87C3-411F-8CE5-92B374C7A0BC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B7CE5B52-09C3-4270-A572-37CE9DEC464B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7CE5B52-09C3-4270-A572-37CE9DEC464B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7CE5B52-09C3-4270-A572-37CE9DEC464B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7CE5B52-09C3-4270-A572-37CE9DEC464B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCAF88BA-87C3-411F-8CE5-92B374C7A0BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCAF88BA-87C3-411F-8CE5-92B374C7A0BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCAF88BA-87C3-411F-8CE5-92B374C7A0BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCAF88BA-87C3-411F-8CE5-92B374C7A0BC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
