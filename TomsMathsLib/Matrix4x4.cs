@@ -58,7 +58,7 @@ namespace TomsMathsLib
 		/// <returns></returns>
 		public static Matrix4X4 Translation(Vector3 translation)
 		{
-			throw new NotImplementedException();
+		    return Translation(translation.X, translation.Y, translation.Z);
 		}
 
 		/// <summary>
@@ -86,7 +86,7 @@ namespace TomsMathsLib
 		/// <returns></returns>
 		public static Matrix4X4 Scale(Vector3 scale)
 		{
-			throw new NotImplementedException();
+		    return Scale(scale.X, scale.Y, scale.Z);
 		}
 
 		/// <summary>
@@ -135,7 +135,7 @@ namespace TomsMathsLib
 		/// <returns></returns>
 		public static Matrix4X4 Rotation(Vector3 rotation)
 		{
-			throw new NotImplementedException();
+		    return Rotation(rotation.X, rotation.Y, rotation.Z);
 		}
 
 		/// <summary>
@@ -219,7 +219,7 @@ namespace TomsMathsLib
 		/// <returns></returns>
 		public Vector3 MultiplyPoint(Vector3 point)
 		{
-			throw new NotImplementedException();
+		    return MultiplyPoint(point.X, point.Y, point.Z);
 		}
 
 		/// <summary>
@@ -241,7 +241,7 @@ namespace TomsMathsLib
 		/// <returns></returns>
 		public Vector3 MultiplyDirection(Vector3 direction)
 		{
-			throw new NotImplementedException();
+		    return MultiplyDirection(direction.X, direction.Y, direction.Z);
 		}
 
 		#endregion
@@ -260,7 +260,7 @@ namespace TomsMathsLib
 			float outY = this[1, 0] * x + this[1, 1] * y + this[1, 2] * z + this[1, 3] * w;
 			float outZ = this[2, 0] * x + this[2, 1] * y + this[2, 2] * z + this[2, 3] * w;
 
-			throw new NotImplementedException();
+			return new Vector3(outX, outY, outZ);
 		}
 	}
 }
