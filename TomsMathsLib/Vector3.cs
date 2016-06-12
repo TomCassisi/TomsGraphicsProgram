@@ -67,16 +67,14 @@ namespace TomsMathsLib
         /// <returns></returns>
         public float DotProduct(Vector3 other)
         {
-            Vector3 thisNormalized = this.GetNormalized();
+            Vector3 thisNormalized = GetNormalized();
             Vector3 otherNormalized = other.GetNormalized();
 
             float axbx = thisNormalized.X * otherNormalized.X;
             float ayby = thisNormalized.Y * otherNormalized.Y;
             float azbz = thisNormalized.Z * otherNormalized.Z;
 
-            float adotb = axbx + ayby + azbz;
-
-            return (float)(Math.Acos(adotb) / (-2 * Math.PI));
+            return axbx + ayby + azbz;
         }
     }
 }
