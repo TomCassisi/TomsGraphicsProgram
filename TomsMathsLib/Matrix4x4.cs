@@ -154,6 +154,58 @@ namespace TomsMathsLib
 			return translationMatrix * rotationMatrix * scaleMatrix;
 		}
 
+		/// <summary>
+		/// Returns a camera view matrix.
+		/// </summary>
+		/// <param name="position"></param>
+		/// <param name="rotation"></param>
+		/// <returns></returns>
+		public static Matrix4X4 View(Vector3 position, Vector3 rotation)
+		{
+			Matrix4X4 trans = Translation(-position);
+			Matrix4X4 rot = Rotation(-rotation);
+
+			// Move then rotate.
+			return rot * trans;
+		}
+
+		/// <summary>
+		/// Create an orthographic projection matrix.
+		/// </summary>
+		/// <param name="width"></param>
+		/// <param name="height"></param>
+		/// <param name="near"></param>
+		/// <param name="far"></param>
+		/// <returns></returns>
+		public static Matrix4X4 Orthographic(float width, float height, float near, float far)
+		{
+			Matrix4X4 output = Identity();
+
+			output[0, 0] = 1 / width;
+			output[1, 1] = 1 / height;
+			output[2, 2] = -2 / (far - near);
+			output[2, 3] = -(far + near) / (far - near);
+
+			return output;
+		}
+
+		public static Matrix4X4 Projection(float fov, float aspect, float nearDist, float farDist)
+		{
+			Matrix4X4 output = Identity();
+
+			float frustumDepth = farDist - nearDist;
+			float oneOverDepth = 1 / frustumDepth;
+
+			output[1, 1] = 1 / (float)Math.Tan(0.5f * fov);
+			output[0, 0] = output[1, 1] / aspect;
+			output[2, 2] = farDist * oneOverDepth;
+			output[3, 2] = (-farDist * nearDist) * oneOverDepth;
+			output[2, 3] = 1;
+			output[3, 3] = 0;
+
+			return output;
+		}
+
 		#endregion
 
 		#region Methods
@@ -259,6 +311,11 @@ namespace TomsMathsLib
 			float outX = this[0, 0] * x + this[0, 1] * y + this[0, 2] * z + this[0, 3] * w;
 			float outY = this[1, 0] * x + this[1, 1] * y + this[1, 2] * z + this[1, 3] * w;
 			float outZ = this[2, 0] * x + this[2, 1] * y + this[2, 2] * z + this[2, 3] * w;
+			float outW = this[3, 0] * x + this[3, 1] * y + this[3, 2] * z + this[3, 3] * w;
+
+			outX /= outW;
+			outY /= outW;
+			outZ /= outW;
 
 			return new Vector3(outX, outY, outZ);
 		}
