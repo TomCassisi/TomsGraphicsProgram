@@ -80,10 +80,9 @@ namespace TomsMathsLibTest
 		{
 			Vector3 target = new Vector3(3, 4, 5);
 
-			float expected = 1;
 			float actual = target.GetNormalized().Magnitude;
 
-			Assert.AreEqual(expected, actual);
+			Assert.AreEqual(1, actual);
 		}
 
 		/// <summary>
@@ -101,6 +100,36 @@ namespace TomsMathsLibTest
 			Assert.AreEqual(-1, forward.DotProduct(back));
 			Assert.AreEqual(0, forward.DotProduct(right));
 			Assert.AreEqual(0, forward.DotProduct(left));
+		}
+
+		/// <summary>
+		///A test for op_Addition
+		///</summary>
+		[TestMethod]
+		public void op_AdditionTest()
+		{
+			Vector3 v1 = new Vector3(); // TODO: Initialize to an appropriate value
+			Vector3 v2 = new Vector3(); // TODO: Initialize to an appropriate value
+			Vector3 expected = new Vector3(); // TODO: Initialize to an appropriate value
+			Vector3 actual;
+			actual = (v1 + v2);
+			Assert.AreEqual(expected, actual);
+			Assert.Inconclusive("Verify the correctness of this test method.");
+		}
+
+		/// <summary>
+		///A test for op_Subtraction
+		///</summary>
+		[TestMethod]
+		public void op_SubtractionTest()
+		{
+			Vector3 v1 = new Vector3(); // TODO: Initialize to an appropriate value
+			Vector3 v2 = new Vector3(); // TODO: Initialize to an appropriate value
+			Vector3 expected = new Vector3(); // TODO: Initialize to an appropriate value
+			Vector3 actual;
+			actual = (v1 - v2);
+			Assert.AreEqual(expected, actual);
+			Assert.Inconclusive("Verify the correctness of this test method.");
 		}
 	}
 }
