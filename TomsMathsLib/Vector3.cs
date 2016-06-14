@@ -14,20 +14,6 @@ namespace TomsMathsLib
 		public float Z { get { return m_Z; } }
 
 		/// <summary>
-		/// Distance from origin to Vector
-		/// </summary>
-		public float Magnitude
-		{
-			get
-			{
-				float m1 = MathUtils.Pythagoras(X, Y);
-				float m2 = MathUtils.Pythagoras(m1, Z);
-
-				return m2;
-			}
-		}
-
-		/// <summary>
 		/// Constructor.
 		/// </summary>
 		/// <param name="x"></param>
@@ -39,6 +25,20 @@ namespace TomsMathsLib
 			m_Y = y;
 			m_Z = z;
 		}
+
+        /// <summary>
+        /// Distance from origin to Vector
+        /// </summary>
+        public float Magnitude
+        {
+            get
+            {
+                float m1 = MathUtils.Pythagoras(X, Y);
+                float m2 = MathUtils.Pythagoras(m1, Z);
+
+                return m2;
+            }
+        }
 
 		/// <summary>
 		/// Normalizing magnitude to 1
