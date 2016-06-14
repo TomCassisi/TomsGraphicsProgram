@@ -108,13 +108,13 @@ namespace TomsMathsLibTest
 		[TestMethod]
 		public void op_AdditionTest()
 		{
-			Vector3 v1 = new Vector3(); // TODO: Initialize to an appropriate value
-			Vector3 v2 = new Vector3(); // TODO: Initialize to an appropriate value
-			Vector3 expected = new Vector3(); // TODO: Initialize to an appropriate value
-			Vector3 actual;
-			actual = (v1 + v2);
+			Vector3 v1 = new Vector3(2, 2, 2); // TODO: Initialize to an appropriate value
+			Vector3 v2 = new Vector3(1, 1, 1); // TODO: Initialize to an appropriate value
+			Vector3 expected = new Vector3(3, 3, 3); // TODO: Initialize to an appropriate value
+
+			Vector3 actual = (v1 + v2);
+
 			Assert.AreEqual(expected, actual);
-			Assert.Inconclusive("Verify the correctness of this test method.");
 		}
 
 		/// <summary>
@@ -123,13 +123,13 @@ namespace TomsMathsLibTest
 		[TestMethod]
 		public void op_SubtractionTest()
 		{
-			Vector3 v1 = new Vector3(); // TODO: Initialize to an appropriate value
-			Vector3 v2 = new Vector3(); // TODO: Initialize to an appropriate value
-			Vector3 expected = new Vector3(); // TODO: Initialize to an appropriate value
-			Vector3 actual;
-			actual = (v1 - v2);
+			Vector3 v1 = new Vector3(1, 1, 1); // TODO: Initialize to an appropriate value
+			Vector3 v2 = new Vector3(2, 2, 2); // TODO: Initialize to an appropriate value
+			Vector3 expected = new Vector3(-1, -1, -1); // TODO: Initialize to an appropriate value
+			
+			Vector3 actual = (v1 - v2);
+
 			Assert.AreEqual(expected, actual);
-			Assert.Inconclusive("Verify the correctness of this test method.");
 		}
 	}
 }
