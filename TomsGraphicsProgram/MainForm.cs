@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using TomsMathsLib;
 
 namespace TomsGraphicsProgram
 {
@@ -42,12 +43,27 @@ namespace TomsGraphicsProgram
 					int g = (int)Math.Floor((float)y / ClientSize.Height * 255);
 					int b = 0;
 
-					Color color = Color.FromArgb(r, g, b);
+					Color color = Color.Black;
 
 					m_Bitmap.SetPixel(x, y, color);
 				}
 			}
 
+		    for (int y = 10; y < ClientSize.Height; y++)
+		    {
+                m_Bitmap.SetPixel(10, y, Color.White);
+
+                m_Bitmap.SetPixel(60, y, Color.Blue);
+
+                m_Bitmap.SetPixel(110, y, Color.Chartreuse);
+
+                m_Bitmap.SetPixel(160, y, Color.Coral);
+
+                m_Bitmap.SetPixel(210, y, Color.DarkOrchid);
+
+                m_Bitmap.SetPixel(260, y, Color.DeepPink);
+		    }
+            
 			e.Graphics.DrawImage(m_Bitmap, 0, 0);
 		}
 	}
