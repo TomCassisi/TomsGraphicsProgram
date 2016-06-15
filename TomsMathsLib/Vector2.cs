@@ -67,5 +67,48 @@ namespace TomsMathsLib
             return axbx + ayby;
         }
 
+        /// <summary>
+        /// Adds the two vectors.
+        /// </summary>
+        /// <param name="v1"></param>
+        /// <param name="v2"></param>
+        /// <returns></returns>
+        public static Vector2 operator +(Vector2 v1, Vector2 v2)
+        {
+            return new Vector2((v1.X + v2.X), (v1.Y + v2.Y));
+        }
+
+        /// <summary>
+        /// Subtracts vector 2 from vector 1.
+        /// </summary>
+        /// <param name="v1"></param>
+        /// <param name="v2"></param>
+        /// <returns></returns>
+        public static Vector2 operator -(Vector2 v1, Vector2 v2)
+        {
+            return new Vector2((v1.X - v2.X), (v1.Y - v2.Y));
+        }
+
+        /// <summary>
+        /// Returns a negative vector.
+        /// </summary>
+        /// <param name="v1"></param>
+        /// <returns></returns>
+        public static Vector2 operator -(Vector2 v1)
+        {
+            return new Vector2(0, 0) - v1;
+        }
+
+        /// <summary>
+        /// Dividing vectors by a certain value
+        /// </summary>
+        /// <param name="v1"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static Vector2 operator /(Vector2 v1, float value)
+        {
+            return new Vector2((v1.X / value), (v1.Y / value));
+        }
+
     }
 }
