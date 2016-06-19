@@ -49,6 +49,8 @@ namespace TomsGraphicsProgram
 				}
 			}
 
+            m_Bitmap.DrawLine(new Vector2(40, 50), new Vector2(80, 100), Color.Azure);
+
 		    for (int y = 10; y < ClientSize.Height; y++)
 		    {
                 m_Bitmap.SetPixel(10, y, Color.White);
