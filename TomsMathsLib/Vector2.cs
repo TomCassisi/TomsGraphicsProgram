@@ -110,5 +110,36 @@ namespace TomsMathsLib
             return new Vector2((v1.X / value), (v1.Y / value));
         }
 
+        /// <summary>
+        /// Checking if one Vector2 is the same as the other.
+        /// </summary>
+        /// <param name="v1"></param>
+        /// <param name="v2"></param>
+        /// <returns></returns>
+        public static bool operator ==(Vector2 v1, Vector2 v2)
+        {
+            if (Math.Abs(v1.X - v2.X) > 0.01f)
+            {
+                return false;
+            }
+
+            if (Math.Abs(v1.Y - v2.Y) > 0.01f)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Checking if the two vectors are not the same
+        /// </summary>
+        /// <param name="v1"></param>
+        /// <param name="v2"></param>
+        /// <returns></returns>
+        public static bool operator !=(Vector2 v1, Vector2 v2)
+        {
+            return !(v1 == v2);
+        }
     }
 }
