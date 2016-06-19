@@ -15,6 +15,12 @@ namespace TomsGraphicsProgram
             int x = (int)postion.X;
             int y = (int)postion.Y;
 
+            if (x < 0 || x >= extends.Width)
+                return;
+            
+            if (y < 0 || y >= extends.Height)
+                return;
+
             extends.SetPixel(x, y, color);
         }
 
