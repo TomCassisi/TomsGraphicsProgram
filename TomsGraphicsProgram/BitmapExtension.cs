@@ -20,9 +20,15 @@ namespace TomsGraphicsProgram
 
         public static void DrawLine(this Bitmap myBitmap, Vector2 start, Vector2 end, Color color)
         {
+            if (start == end)
+            {
+                myBitmap.SetPixel(start, color);
+                return;
+            }
+
             Vector2 midPoint = new Vector2();
 
-            midPoint =(start + end) / 2;
+            midPoint = (start + end) / 2;
 
             DrawLine(myBitmap, start, midPoint, color);
             DrawLine(myBitmap, midPoint, end, color);
