@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using TomsMathsLib;
@@ -49,23 +50,62 @@ namespace TomsGraphicsProgram
 				}
 			}
 
-            m_Bitmap.DrawLine(new Vector2(40, 50), new Vector2(80, 100), Color.Azure);
+            // Creating Cube geometry with Vertices
+            List<Vector3> Vertices = new List<Vector3>();
 
-		    for (int y = 10; y < ClientSize.Height; y++)
+            // Top
+            Vertices.Add(new Vector3(0.5f, 0.5f, 0.5f));
+            Vertices.Add(new Vector3(0.5f, -0.5f, 0.5f));
+            Vertices.Add(new Vector3(-0.5f, 0.5f, 0.5f));
+            Vertices.Add(new Vector3(-0.5f, -0.5f, 0.5f));
+
+            // Bottom
+            Vertices.Add(new Vector3(0.5f, 0.5f, -0.5f));
+            Vertices.Add(new Vector3(0.5f, -0.5f, -0.5f));
+            Vertices.Add(new Vector3(-0.5f, 0.5f, -0.5f));
+            Vertices.Add(new Vector3(-0.5f, -0.5f, -0.5f));           
+
+            // Matrices
+		    Matrix4X4 World = Matrix4X4.Trs(
+                new Vector3(), 
+                new Vector3(MathUtils.DegreesToRadians(45), MathUtils.DegreesToRadians(45) ,MathUtils.DegreesToRadians(20)), 
+                Vector3.One() * 1.5f);
+		    Matrix4X4 Camera = Matrix4X4.Translation(new Vector3(0, 0, -20));
+		    Matrix4X4 Projection = Matrix4X4.Projection(80, 1, 0.1f, 1000);
+		    Matrix4X4 Final = Projection * Camera * World;
+
+            // Taking Model space data and converting it to ScreenPosition data with the Matrices
+            List<Vector2> ScreenPos = new List<Vector2>();
+
+		    for (int index = 0; index < Vertices.Count; index++)
 		    {
-                m_Bitmap.SetPixel(10, y, Color.White);
+		        Vector3 point = Final.MultiplyPoint(Vertices[index]);
 
-                m_Bitmap.SetPixel(60, y, Color.Blue);
+		        float x = (point.X + 1) / 2 * m_Bitmap.Width;
+		        float y = (point.Y + 1) / 2 * m_Bitmap.Height;
 
-                m_Bitmap.SetPixel(110, y, Color.Chartreuse);
-
-                m_Bitmap.SetPixel(160, y, Color.Coral);
-
-                m_Bitmap.SetPixel(210, y, Color.DarkOrchid);
-
-                m_Bitmap.SetPixel(260, y, Color.DeepPink);
+                ScreenPos.Add(new Vector2(x, y));
 		    }
-            
+
+            // Drawning lines
+            // Vertical
+            m_Bitmap.DrawLine(ScreenPos[0], ScreenPos[1], Color.Azure);
+            m_Bitmap.DrawLine(ScreenPos[2], ScreenPos[3], Color.Azure);
+            m_Bitmap.DrawLine(ScreenPos[4], ScreenPos[5], Color.Azure);
+            m_Bitmap.DrawLine(ScreenPos[6], ScreenPos[7], Color.Azure);
+
+            // Horizontal
+            m_Bitmap.DrawLine(ScreenPos[0], ScreenPos[2], Color.Azure);
+            m_Bitmap.DrawLine(ScreenPos[4], ScreenPos[6], Color.Azure);
+            m_Bitmap.DrawLine(ScreenPos[1], ScreenPos[3], Color.Azure);
+            m_Bitmap.DrawLine(ScreenPos[5], ScreenPos[7], Color.Azure);
+
+            // Diagonal
+            m_Bitmap.DrawLine(ScreenPos[0], ScreenPos[4], Color.Azure);
+            m_Bitmap.DrawLine(ScreenPos[2], ScreenPos[6], Color.Azure);
+            m_Bitmap.DrawLine(ScreenPos[1], ScreenPos[5], Color.Azure);
+            m_Bitmap.DrawLine(ScreenPos[3], ScreenPos[7], Color.Azure);
+
 			e.Graphics.DrawImage(m_Bitmap, 0, 0);
 		}
 	}
