@@ -22,5 +22,15 @@ namespace TomsMathsLib
 
             return z;
         }
+
+        /// <summary>
+        /// Converting Degress to Radians
+        /// </summary>
+        /// <param name="degrees"></param>
+        /// <returns></returns>
+        public static float DegreesToRadians(float degrees)
+        {
+            return (float)(degrees / 180 * Math.PI);
+        }
     }
 }
