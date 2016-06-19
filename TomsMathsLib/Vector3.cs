@@ -103,5 +103,16 @@ namespace TomsMathsLib
 		{
             return new Vector3(0, 0 , 0) -v1;
 		}
+
+        /// <summary>
+        /// Dividing vectors by a certain value
+        /// </summary>
+        /// <param name="v1"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static Vector3 operator /(Vector3 v1, float value)
+        {
+            return new Vector3((v1.X / value), (v1.Y / value), (v1.Z / value));
+        }
 	}
 }
