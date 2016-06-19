@@ -13,19 +13,6 @@ namespace TomsMathsLib
 		public float Y { get { return m_Y; } }
 		public float Z { get { return m_Z; } }
 
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-		/// <param name="x"></param>
-		/// <param name="y"></param>
-		/// <param name="z"></param>
-		public Vector3(float x, float y, float z)
-		{
-			m_X = x;
-			m_Y = y;
-			m_Z = z;
-		}
-
         /// <summary>
         /// Distance from origin to Vector
         /// </summary>
@@ -41,6 +28,28 @@ namespace TomsMathsLib
         }
 
 		/// <summary>
+		/// Constructor.
+		/// </summary>
+		/// <param name="x"></param>
+		/// <param name="y"></param>
+		/// <param name="z"></param>
+		public Vector3(float x, float y, float z)
+		{
+			m_X = x;
+			m_Y = y;
+			m_Z = z;
+		}
+
+        /// <summary>
+        /// Returning a 1,1,1 Vector 3
+        /// </summary>
+        /// <returns></returns>
+	    public static Vector3 One()
+	    {
+	        return new Vector3(1, 1, 1);
+	    }
+
+	    /// <summary>
 		/// Normalizing magnitude to 1
 		/// </summary>
 		/// <returns></returns>
@@ -114,5 +123,16 @@ namespace TomsMathsLib
         {
             return new Vector3((v1.X / value), (v1.Y / value), (v1.Z / value));
         }
+
+        /// <summary>
+        /// Multiplying a Vector by a certain value
+        /// </summary>
+        /// <param name="v1"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+	    public static Vector3 operator *(Vector3 v1, float value)
+	    {
+	        return new Vector3((v1.X * value),(v1.Y * value),(v1.Z * value));
+	    }
 	}
 }
