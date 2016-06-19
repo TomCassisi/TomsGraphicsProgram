@@ -40,10 +40,6 @@ namespace TomsGraphicsProgram
 			{
 				for (int y = 0; y < ClientSize.Height; y++)
 				{
-					int r = (int)Math.Floor((float)x / ClientSize.Width * 255);
-					int g = (int)Math.Floor((float)y / ClientSize.Height * 255);
-					int b = 0;
-
 					Color color = Color.Black;
 
 					m_Bitmap.SetPixel(x, y, color);
@@ -63,48 +59,68 @@ namespace TomsGraphicsProgram
             Vertices.Add(new Vector3(0.5f, 0.5f, -0.5f));
             Vertices.Add(new Vector3(0.5f, -0.5f, -0.5f));
             Vertices.Add(new Vector3(-0.5f, 0.5f, -0.5f));
-            Vertices.Add(new Vector3(-0.5f, -0.5f, -0.5f));           
+            Vertices.Add(new Vector3(-0.5f, -0.5f, -0.5f));
+  
+            // List of vert indices for the triangles
+            List<int> triangles = new List<int>();
+
+            triangles.Add(0);
+            triangles.Add(1);
+            triangles.Add(2);
+            triangles.Add(1);
+            triangles.Add(2);
+            triangles.Add(3);
+
+            triangles.Add(4);
+            triangles.Add(5);
+            triangles.Add(6);
+            triangles.Add(5);
+            triangles.Add(6);
+            triangles.Add(7);
+
+            triangles.Add(4);
+            triangles.Add(0);
+            triangles.Add(5);
+            triangles.Add(5);
+            triangles.Add(0);
+            triangles.Add(1);
+
+            triangles.Add(6);
+            triangles.Add(2);
+            triangles.Add(7);
+            triangles.Add(7);
+            triangles.Add(2);
+            triangles.Add(3);
+
+            triangles.Add(4);
+            triangles.Add(6);
+            triangles.Add(2);
+            triangles.Add(4);
+            triangles.Add(2);
+            triangles.Add(0);
+
+            triangles.Add(5);
+            triangles.Add(7);
+            triangles.Add(3);
+            triangles.Add(3);
+            triangles.Add(1);
+            triangles.Add(5);
+         
+            // Creating a Mesh
+            Mesh cube = new Mesh();
+            cube.SetVerts(Vertices);
+
+            cube.SetTriangles(triangles);
+
+            cube.Position = new Vector3();
+            cube.Rotation = new Vector3(MathUtils.DegreesToRadians(45), MathUtils.DegreesToRadians(45), MathUtils.DegreesToRadians(20));
+            cube.Scale = (Vector3.One() * 1.5f);
 
             // Matrices
-		    Matrix4X4 World = Matrix4X4.Trs(
-                new Vector3(), 
-                new Vector3(MathUtils.DegreesToRadians(45), MathUtils.DegreesToRadians(45) ,MathUtils.DegreesToRadians(20)), 
-                Vector3.One() * 1.5f);
 		    Matrix4X4 Camera = Matrix4X4.Translation(new Vector3(0, 0, -20));
 		    Matrix4X4 Projection = Matrix4X4.Projection(80, 1, 0.1f, 1000);
-		    Matrix4X4 Final = Projection * Camera * World;
 
-            // Taking Model space data and converting it to ScreenPosition data with the Matrices
-            List<Vector2> ScreenPos = new List<Vector2>();
-
-		    for (int index = 0; index < Vertices.Count; index++)
-		    {
-		        Vector3 point = Final.MultiplyPoint(Vertices[index]);
-
-		        float x = (point.X + 1) / 2 * m_Bitmap.Width;
-		        float y = (point.Y + 1) / 2 * m_Bitmap.Height;
-
-                ScreenPos.Add(new Vector2(x, y));
-		    }
-
-            // Drawning lines
-            // Vertical
-            m_Bitmap.DrawLine(ScreenPos[0], ScreenPos[1], Color.Azure);
-            m_Bitmap.DrawLine(ScreenPos[2], ScreenPos[3], Color.Azure);
-            m_Bitmap.DrawLine(ScreenPos[4], ScreenPos[5], Color.Azure);
-            m_Bitmap.DrawLine(ScreenPos[6], ScreenPos[7], Color.Azure);
-
-            // Horizontal
-            m_Bitmap.DrawLine(ScreenPos[0], ScreenPos[2], Color.Azure);
-            m_Bitmap.DrawLine(ScreenPos[4], ScreenPos[6], Color.Azure);
-            m_Bitmap.DrawLine(ScreenPos[1], ScreenPos[3], Color.Azure);
-            m_Bitmap.DrawLine(ScreenPos[5], ScreenPos[7], Color.Azure);
-
-            // Diagonal
-            m_Bitmap.DrawLine(ScreenPos[0], ScreenPos[4], Color.Azure);
-            m_Bitmap.DrawLine(ScreenPos[2], ScreenPos[6], Color.Azure);
-            m_Bitmap.DrawLine(ScreenPos[1], ScreenPos[5], Color.Azure);
-            m_Bitmap.DrawLine(ScreenPos[3], ScreenPos[7], Color.Azure);
+            m_Bitmap.DrawMesh(Projection, Camera, cube, Color.Azure);
 
 			e.Graphics.DrawImage(m_Bitmap, 0, 0);
 		}
