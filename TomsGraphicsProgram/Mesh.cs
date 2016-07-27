@@ -7,13 +7,8 @@ using TomsMathsLib;
 
 namespace TomsGraphicsProgram
 {
-    public class Mesh
+    public class Mesh : AbstractWorldEntity
     {
-        // Auto properties for Mesh
-        public Vector3 Position { get; set; }
-        public Vector3 Rotation { get; set; }
-        public Vector3 Scale { get; set; }
-
         // Backing Fields
         private readonly List<Vector3> m_Verts;
         private readonly List<int> m_Triangles;
@@ -49,12 +44,6 @@ namespace TomsGraphicsProgram
         public int[] GetTriangles()
         {
             return m_Triangles.ToArray();
-        }
-
-        // Getting the Martix for the Mesh
-        public Matrix4X4 GetWorldMatrix()
-        {
-            return Matrix4X4.Trs(Position, Rotation, Scale);
         }
     }
 }

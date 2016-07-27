@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Policy;
 
 namespace TomsMathsLib
 {
@@ -80,6 +81,18 @@ namespace TomsMathsLib
 
 			return axbx + ayby + azbz;
 		}
+
+	    public Vector3 Cross(Vector3 other)
+	    {
+	        return CrossProduct(this, other);
+	    }
+
+	    public static Vector3 CrossProduct(Vector3 a, Vector3 b)
+	    { 
+           Vector3 aCrossB = new Vector3((a.Y * b.Z) - (a.Z * b.Y), (a.Z * b.X) -  (a.X * b.Z) , (a.X * b.Y) - (a.Y - b.X));
+	       return aCrossB.GetNormalized();
+
+	    }
 
 		/// <summary>
 		/// Adds the two vectors.
